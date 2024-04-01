@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Animes</title>
+    <link rel="shortcut icon" href="img/kuromifavi.ico" type="image/x-icon">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #3b05b8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #09b9ab;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input[type="number"] {
+        width: 100px;
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Calculadora de Animes/séries</h2>
+      <label for="eps">Quantos eps tem seu anime/série?</label>
+      <input type="number" id="eps" />
+      <label for="falta">Quantos eps falta para seu anime/série?</label>
+      <input type="number" id="falta" />
+      <label for="minutos">Quantos minutos cada ep tem em seu anime/série?</label>
+      <input type="number" id="minutos" />
+      <button onclick="calcular()">Calcular</button>
+      <div id="resultado"></div>
+    </div>
+
+    <script>
+      function calcular() {
+        var t = parseFloat(document.getElementById("eps").value);
+        var f = parseFloat(document.getElementById("falta").value);
+        var m = parseFloat(document.getElementById("minutos").value);
+
+        var toh = (t * m) / 60;
+        var tod = (t * m) / 60 / 24;
+        var faltah = (f * m) / 60;
+        var faltad = (f * m) / 60 / 24;
+
+        var resultado = "Eps total em horas: " + toh.toFixed(2) + "<br>";
+        resultado += "Eps total em dias: " + tod.toFixed(2) + "<br>";
+        resultado += "Eps que falta em horas: " + faltah.toFixed(2) + "<br>";
+        resultado += "Eps que falta em dias: " + faltad.toFixed(2);
+
+        document.getElementById("resultado").innerHTML = resultado;
+      }
+    </script>
+  </body>
+</html>
