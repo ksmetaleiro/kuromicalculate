@@ -75,47 +75,47 @@
   </div>
 
   <script>
-    function calcular() { <!-- Função para calcular os resultados -->
-      var t = parseFloat(document.getElementById("eps").value); <!-- Obtém o número total de episódios -->
-      var a = parseFloat(document.getElementById("assistindo").value); <!-- Obtém o número de episódios assistidos -->
-      var f = parseFloat(document.getElementById("falta").value); <!-- Obtém o número de episódios restantes -->
-      var m = document.getElementById("minutos").value; <!-- Obtém a duração média dos episódios -->
-      var minutosOutro = document.getElementById("minutosOutro").value; <!-- Obtém a duração personalizada, se aplicável -->
+    function calcular() { // Função para calcular os resultados 
+      var t = parseFloat(document.getElementById("eps").value); // Obtém o número total de episódios 
+      var a = parseFloat(document.getElementById("assistindo").value); // Obtém o número de episódios assistidos -->
+      var f = parseFloat(document.getElementById("falta").value); // Obtém o número de episódios restantes 
+      var m = document.getElementById("minutos").value; // Obtém a duração média dos episódios 
+      var minutosOutro = document.getElementById("minutosOutro").value; // Obtém a duração personalizada, se aplicável 
 
-      if (m === "outro" && !isNaN(minutosOutro)) { <!-- Verifica se a duração é personalizada e válida -->
-        m = parseFloat(minutosOutro); <!-- Converte a duração personalizada para número -->
-      } else if (m !== "outro") { <!-- Verifica se a duração não é personalizada -->
-        m = parseFloat(m); <!-- Converte a duração padrão para número -->
-      } else { <!-- Caso a duração personalizada não seja válida -->
-        alert("Por favor, insira um valor válido para a duração dos episódios."); <!-- Alerta de valor inválido -->
-        return; <!-- Retorna para evitar o cálculo com valor inválido -->
+      if (m === "outro" && !isNaN(minutosOutro)) { // Verifica se a duração é personalizada e válida 
+        m = parseFloat(minutosOutro); // Converte a duração personalizada para número 
+      } else if (m !== "outro") { // Verifica se a duração não é personalizada 
+        m = parseFloat(m); // Converte a duração padrão para número 
+      } else { // Caso a duração personalizada não seja válida 
+        alert("Por favor, insira um valor válido para a duração dos episódios."); // Alerta de valor inválido 
+        return; // Retorna para evitar o cálculo com valor inválido 
       }
 
-      var toh = (t * m) / 60; <!-- Calcula o total de horas -->
-      var tod = (t * m) / 60 / 24; <!-- Calcula o total de dias -->
+      var toh = (t * m) / 60; // Calcula o total de horas 
+      var tod = (t * m) / 60 / 24; // Calcula o total de dias 
       var faltah = (f * m) / 60;
-var faltad = (f * m) / 60 / 24; <!-- Calcula os episódios restantes em dias -->
-      var assistindoh = ((t - a) * m) / 60; <!-- Calcula o tempo para terminar em horas -->
-      var assistindod = ((t - a) * m) / 60 / 24; <!-- Calcula o tempo para terminar em dias -->
+var faltad = (f * m) / 60 / 24; // Calcula os episódios restantes em dias 
+      var assistindoh = ((t - a) * m) / 60; // Calcula o tempo para terminar em horas
+      var assistindod = ((t - a) * m) / 60 / 24; // Calcula o tempo para terminar em dias 
 
-      var resultado = "Eps total em horas: " + toh.toFixed(2) + "<br>"; <!-- Resultado do total de horas -->
-      resultado += "Eps total em dias: " + tod.toFixed(2) + "<br>"; <!-- Resultado do total de dias -->
-      resultado += "Eps que falta em horas: " + faltah.toFixed(2) + "<br>"; <!-- Resultado dos episódios restantes em horas -->
-      resultado += "Eps que falta em dias: " + faltad.toFixed(2) + "<br>"; <!-- Resultado dos episódios restantes em dias -->
-      resultado += "Tempo para terminar (em horas): " + assistindoh.toFixed(2) + "<br>"; <!-- Resultado do tempo para terminar em horas -->
-      resultado += "Tempo para terminar (em dias): " + assistindod.toFixed(2); <!-- Resultado do tempo para terminar em dias -->
+      var resultado = "Eps total em horas: " + toh.toFixed(2) + "<br>"; // Resultado do total de horas 
+      resultado += "Eps total em dias: " + tod.toFixed(2) + "<br>"; // Resultado do total de dias 
+      resultado += "Eps que falta em horas: " + faltah.toFixed(2) + "<br>"; // Resultado dos episódios restantes em horas 
+      resultado += "Eps que falta em dias: " + faltad.toFixed(2) + "<br>"; //Resultado dos episódios restantes em dias 
+      resultado += "Tempo para terminar (em horas): " + assistindoh.toFixed(2) + "<br>"; // Resultado do tempo para terminar em horas 
+      resultado += "Tempo para terminar (em dias): " + assistindod.toFixed(2); // Resultado do tempo para terminar em dias
 
-      document.getElementById("resultado").innerHTML = resultado; <!-- Exibe o resultado na página -->
+      document.getElementById("resultado").innerHTML = resultado; // Exibe o resultado na página 
     }
 
-    function mostrarCampoOutro() { <!-- Função para mostrar/esconder campo de duração personalizada -->
-      var selectMinutos = document.getElementById("minutos"); <!-- Obtém o elemento da caixa de seleção de duração -->
-      var inputMinutosOutro = document.getElementById("minutosOutro"); <!-- Obtém o elemento do campo de duração personalizada -->
+    function mostrarCampoOutro() { // Função para mostrar/esconder campo de duração personalizada 
+      var selectMinutos = document.getElementById("minutos"); // Obtém o elemento da caixa de seleção de duração 
+      var inputMinutosOutro = document.getElementById("minutosOutro"); /* Obtém o elemento do campo de duração personalizada */
 
-      if (selectMinutos.value === "outro") { <!-- Verifica se a opção "Outro" foi selecionada -->
-        inputMinutosOutro.style.display = "block"; <!-- Mostra o campo de duração personalizada -->
-      } else { <!-- Caso contrário -->
-        inputMinutosOutro.style.display = "none"; <!-- Esconde o campo de duração personalizada -->
+      if (selectMinutos.value === "outro") { // Verifica se a opção "Outro" foi selecionada 
+        inputMinutosOutro.style.display = "block"; // Mostra o campo de duração personalizada 
+      } else { // Caso contrário 
+        inputMinutosOutro.style.display = "none"; // Esconde o campo de duração personalizada 
       }
     }
   </script>
