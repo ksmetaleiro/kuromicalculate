@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Animes</title>
@@ -22,13 +22,20 @@
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px; /* Limita a largura do contêiner */
+        margin: auto; /* Centraliza o contêiner na página */
+      }
+      label {
+        display: block; /* Faz com que as etiquetas ocupem uma linha inteira */
+        margin-bottom: 5px; /* Adiciona um pequeno espaçamento inferior entre as etiquetas */
       }
       input[type="number"] {
-        width: 100px;
+        width: calc(100% - 16px); /* Calcula a largura do input para preencher o contêiner */
         padding: 8px;
         margin-bottom: 10px;
       }
       button {
+        width: 100%;
         padding: 8px 20px;
         background-color: #007bff;
         color: #ffffff;
@@ -40,38 +47,45 @@
         background-color: #0056b3;
       }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Calculadora de tempo Animes/séries</h2>
-      <label for="eps">Quantos eps tem sua série?</label>
-      <input type="number" id="eps" />
-      <label for="falta">Quantos eps falta para sua série?</label>
-      <input type="number" id="falta" />
-      <label for="minutos">Quantos minutos cada ep tem em sua série?</label>
-      <input type="number" id="minutos" />
-      <button onclick="calcular()">Calcular</button>
-      <div id="resultado"></div>
-    </div>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora de Animes/séries</h2>
+    <label for="eps">Quantos eps tem sua série?</label>
+    <input type="number" id="eps" />
+    <label for="assistindo">Em qual episódio você está?</label>
+    <input type="number" id="assistindo" />
+    <label for="falta">Quantos eps falta para sua série?</label>
+    <input type="number" id="falta" />
+    <label for="minutos">Quantos minutos cada ep tem em sua série?</label>
+    <input type="number" id="minutos" />
+    <button onclick="calcular()">Calcular</button>
+    <div id="resultado"></div>
+  </div>
 
-    <script>
-      function calcular() {
-        var t = parseFloat(document.getElementById("eps").value);
-        var f = parseFloat(document.getElementById("falta").value);
-        var m = parseFloat(document.getElementById("minutos").value);
+  <script>
+    function calcular() {
+      var t = parseFloat(document.getElementById("eps").value);
+      var a = parseFloat(document.getElementById("assistindo").value);
+      var f = parseFloat(document.getElementById("falta").value);
+      var m = parseFloat(document.getElementById("minutos").value);
 
-        var toh = (t * m) / 60;
-        var tod = (t * m) / 60 / 24;
-        var faltah = (f * m) / 60;
-        var faltad = (f * m) / 60 / 24;
+      var toh = (t * m) / 60;
+      var tod = (t * m) / 60 / 24;
+      var faltah = (f * m) / 60;
+      var faltad = (f * m) / 60 / 24;
+      var assistindoh = ((t - a) * m) / 60;
+      var assistindod = ((t - a) * m) / 60 / 24;
 
-        var resultado = "Eps total em horas: " + toh.toFixed(2) + "<br>";
-        resultado += "Eps total em dias: " + tod.toFixed(2) + "<br>";
-        resultado += "Eps que falta em horas: " + faltah.toFixed(2) + "<br>";
-        resultado += "Eps que falta em dias: " + faltad.toFixed(2);
+      var resultado = "Eps total em horas: " + toh.toFixed(2) + "<br>";
+      resultado += "Eps total em dias: " + tod.toFixed(2) + "<br>";
+      resultado += "Eps que falta em horas: " + faltah.toFixed(2) + "<br>";
+      resultado += "Eps que falta em dias: " + faltad.toFixed(2) + "<br>";
+      resultado += "Tempo para terminar (em horas): " + assistindoh.toFixed(2) + "<br>";
+      resultado += "Tempo para terminar (em dias): " + assistindod.toFixed(2);
 
-        document.getElementById("resultado").innerHTML = resultado;
-      }
-    </script>
-  </body>
+      document.getElementById("resultado").innerHTML = resultado;
+    }
+  </script>
+</body>
 </html>
