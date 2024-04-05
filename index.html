@@ -34,6 +34,12 @@
         padding: 8px;
         margin-bottom: 10px;
       }
+      select,
+      input[type="text"] {
+        width: calc(100% - 16px); /* Calcula a largura do select/input para preencher o contêiner */
+        padding: 8px;
+        margin-bottom: 10px;
+      }
       button {
         width: 100%;
         padding: 8px 20px;
@@ -51,14 +57,19 @@
 <body>
   <div class="container">
     <h2>Calculadora de Animes/séries</h2>
-    <label for="eps">Quantos episódios tem sua série?</label>
+    <label for="eps">Quantos eps tem sua série?</label>
     <input type="number" id="eps" />
     <label for="assistindo">Em qual episódio você está?</label>
     <input type="number" id="assistindo" />
-    <label for="falta">Quantos episódios falta para sua série?</label>
+    <label for="falta">Quantos eps falta para sua série?</label>
     <input type="number" id="falta" />
-    <label for="minutos">Quantos minutos cada episódios tem em sua série?</label>
-    <input type="number" id="minutos" />
+    <label for="minutos">Duração média de cada ep:</label>
+    <select id="minutos" onchange="mostrarCampoOutro()">
+      <option value="20">20min (anime)</option>
+      <option value="40">40min (série)</option>
+      <option value="outro">Outro</option>
+    </select>
+    <input type="text" id="minutosOutro" style="display: none;" placeholder="Digite a duração em minutos">
     <button onclick="calcular()">Calcular</button>
     <div id="resultado"></div>
   </div>
@@ -68,7 +79,17 @@
       var t = parseFloat(document.getElementById("eps").value);
       var a = parseFloat(document.getElementById("assistindo").value);
       var f = parseFloat(document.getElementById("falta").value);
-      var m = parseFloat(document.getElementById("minutos").value);
+      var m = document.getElementById("minutos").value;
+      var minutosOutro = document.getElementById("minutosOutro").value;
+
+      if (m === "outro" && !isNaN(minutosOutro)) {
+        m = parseFloat(minutosOutro);
+      } else if (m !== "outro") {
+        m = parseFloat(m);
+      } else {
+        alert("Por favor, insira um valor válido para a duração dos episódios.");
+        return;
+      }
 
       var toh = (t * m) / 60;
       var tod = (t * m) / 60 / 24;
@@ -85,6 +106,17 @@
       resultado += "Tempo para terminar (em dias): " + assistindod.toFixed(2);
 
       document.getElementById("resultado").innerHTML = resultado;
+    }
+
+    function mostrarCampoOutro() {
+      var selectMinutos = document.getElementById("minutos");
+      var inputMinutosOutro = document.getElementById("minutosOutro");
+
+      if (selectMinutos.value === "outro") {
+        inputMinutosOutro.style.display = "block";
+      } else {
+        inputMinutosOutro.style.display = "none";
+      }
     }
   </script>
 </body>
