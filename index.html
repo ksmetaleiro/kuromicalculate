@@ -1,122 +1,262 @@
-<!DOCTYPE html> <!-- Declaração do tipo de documento -->
-<html lang="pt-br"> <!-- Define o idioma da página -->
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8" /> <!-- Configura o conjunto de caracteres da página -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Configura a visualização em dispositivos móveis -->
-    <title>Calculadora de Animes</title> <!-- Título da página -->
-    <link rel="shortcut icon" href="img/kuromifavi.ico" type="image/x-icon"> <!-- Ícone da página -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Animes</title>
+    <link rel="shortcut icon" href="img/kuromifavi.ico" type="image/x-icon">
     <style>
       body {
-        font-family: Arial, sans-serif; /* Define a família da fonte */
-        margin: 0; /* Remove as margens */
-        padding: 0; /* Remove o preenchimento */
-        box-sizing: border-box; /* Configura a caixa-modelo para incluir o preenchimento e a borda */
-        background-color: #3b05b8; /* Cor de fundo */
-        display: flex; /* Define um contêiner flexível */
-        justify-content: center; /* Centraliza os itens no eixo horizontal */
-        align-items: center; /* Centraliza os itens no eixo vertical */
-        height: 100vh; /* Define a altura da área visível */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #3b05b8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Alterado para min-height para garantir que o rodapé permaneça na parte inferior */
+        background-image: url(img/fundo.jpg);
+        background-repeat: no-repeat;
+        background-position: px 100px;
+        background-size: 1366px 768px;
+        position: relative; /* Adicionado para posicionar o rodapé corretamente */
       }
       .container {
-        background-color: #09b9ab; /* Cor de fundo do contêiner */
-        padding: 20px; /* Espaçamento interno */
-        border-radius: 8px; /* Raio da borda */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
-        max-width: 400px; /* Largura máxima do contêiner */
-        margin: auto; /* Centraliza o contêiner na página */
+        background-color: #33066e;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: auto;
+        background-image: url(img/fundo2.jpg);
+        background-repeat: no-repeat;
+        background-position: px 100px;
+        background-size: 1366px 768px;
       }
       label {
-        display: block; /* Faz com que as etiquetas ocupem uma linha inteira */
-        margin-bottom: 5px; /* Adiciona um pequeno espaçamento inferior entre as etiquetas */
+        display: block;
+        margin-bottom: 5px;
+        color: turquoise;
+        
       }
+
+      h2{
+        color: turquoise;
+        text-shadow: rgb(80, 28, 104) 0.1em 0.1em 0.2em; /* Sombra do texto */
+      }
+
       input[type="number"] {
-        width: calc(100% - 16px); /* Calcula a largura do input para preencher o contêiner */
-        padding: 8px; /* Espaçamento interno */
-        margin-bottom: 10px; /* Adiciona um pequeno espaçamento inferior */
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 10px;
+        background-image: url(img/fundo33.jpg);
+        background-repeat: no-repeat;
+        background-position: px 100px;
+        background-size: 466px 50px;
+        color: rgb(2, 255, 242);
+        text-shadow: rgb(80, 28, 104) 0.1em 0.1em 0.2em; /* Sombra do texto */
+        
       }
       select,
       input[type="text"] {
-        width: calc(100% - 16px); /* Calcula a largura do select/input para preencher o contêiner */
-        padding: 8px; /* Espaçamento interno */
-        margin-bottom: 10px; /* Adiciona um pequeno espaçamento inferior */
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 10px;
+        background-image: url(img/fundo33.jpg);
+        background-repeat: no-repeat;
+        background-position: px 100px;
+        background-size: 466px 50px;
+        color: rgb(2, 255, 242);
+        text-shadow: rgb(57, 16, 77) 0.1em 0.1em 0.2em; /* Sombra do texto */
       }
       button {
-        width: 100%; /* Largura total */
-        padding: 8px 20px; /* Espaçamento interno */
-        background-color: #007bff; /* Cor de fundo */
-        color: #ffffff; /* Cor do texto */
-        border: none; /* Remove a borda */
-        border-radius: 4px; /* Raio da borda */
-        cursor: pointer; /* Altera o cursor ao passar por cima */
+        width: 100%;
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: rgb(2, 255, 242);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-image: url(img/fundo.jpg);
+        background-repeat: no-repeat;
+        background-position: px 100px;
+        background-size: 1366px 768px;
+        margin-bottom: 10px; /* Adiciona espaçamento abaixo do botão */
       }
       button:hover {
-        background-color: #0056b3; /* Cor de fundo ao passar por cima */
+        background-color: #0056b3;
+      }
+      .resultado {
+        display: none; /* Inicia oculto */
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #ffffff; /* Fundo branco */
+        color: rgb(2, 255, 242); /* Texto preto */
+        background-image: url(img/fundo.jpg);
+        background-repeat: no-repeat;
+        background-position: px 100px;
+        background-size: 1366px 768px;
+      }
+      .resultado h3 {
+        margin-top: 0;
+      }
+      .resultado p {
+        margin-bottom: 5px;
+      }
+      .footer {
+        position: absolute; /* Posiciona o rodapé */
+        bottom: 0; /* Fixa o rodapé na parte inferior */
+        width: 100%; /* Largura total */
+        background-color: #09b9ab; /* Cor de fundo */
+        color: #fff; /* Cor do texto */
+        text-align: left; /* Alinhamento à esquerda */
+        padding: 10px; /* Espaçamento interno */
+      }
+      @media (max-width: 600px) {
+        .footer {
+          text-align: center; /* Alinhamento centralizado para dispositivos móveis */
+        }
+        .footer p, .footer div {
+          display: inline-block; /* Permite que os elementos do rodapé apareçam na mesma linha */
+          margin: 5px; /* Adiciona um pequeno espaçamento entre os elementos */
+        }
+      }
+      .credits {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px 10px;
+        border-bottom-right-radius: 8px;
+        font-size: 12px;
+      }
+      .credits a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .credits a:hover {
+        color: #800080; /* Cor roxa no hover */
       }
     </style>
 </head>
 <body>
   <div class="container">
-    <h2>Calculadora de Animes/séries</h2> <!-- Título da calculadora -->
-    <label for="eps">Quantos episódios tem sua série?</label> <!-- Etiqueta para entrada de número de episódios -->
-    <input type="number" id="eps" /> <!-- Campo de entrada para número de episódios -->
-    <label for="assistindo">Em qual episódio você está?</label> <!-- Etiqueta para entrada de episódio atual -->
-    <input type="number" id="assistindo" /> <!-- Campo de entrada para episódio atual -->
-    <label for="falta">Quantos episódios falta para sua série?</label> <!-- Etiqueta para entrada de episódios restantes -->
-    <input type="number" id="falta" /> <!-- Campo de entrada para episódios restantes -->
-    <label for="minutos">Duração média de cada episódio:</label> <!-- Etiqueta para seleção de duração média dos episódios -->
-    <select id="minutos" onchange="mostrarCampoOutro()"> <!-- Caixa de seleção para duração dos episódios -->
-      <option value="20">20min (anime)</option> <!-- Opção de duração de anime -->
-      <option value="40">40min (série)</option> <!-- Opção de duração de série -->
-      <option value="outro">Outro</option> <!-- Opção para inserção de duração personalizada -->
+    <h2>Calculadora de Animes/séries</h2>
+    <label for="eps">Quantos episódios tem sua série?</label>
+    <input type="number" id="eps" />
+    <label for="assistindo">Em qual episódio você está?</label>
+    <input type="number" id="assistindo" />
+    <label for="falta">Quantos episódios falta para sua série?</label>
+    <input type="number" id="falta" />
+    <label for="minutos">Duração média de cada episódio:</label>
+    <select id="minutos" onchange="mostrarCampoOutro()">
+      <option value="20">20min (anime)</option>
+      <option value="40">40min (série)</option>
+      <option value="outro">Outro</option>
     </select>
-    <input type="text" id="minutosOutro" style="display: none;" placeholder="Digite a duração em minutos"> <!-- Campo de entrada para duração personalizada -->
-    <button onclick="calcular()">Calcular</button> <!-- Botão para calcular -->
-    <div id="resultado"></div> <!-- Exibição do resultado -->
+    <input type="text" id="minutosOutro" style="display: none;" placeholder="Digite a duração em minutos">
+    <input type="text" id="segundosOutro" style="display: none;" placeholder="Digite a duração em segundos">
+    <button onclick="calcular()">Calcular</button>
+    <br> <!-- Adiciona uma quebra de linha -->
+    <button onclick="limparCampos()">Limpar Campos</button>
+    <div id="resultado" class="resultado"></div>
   </div>
 
-  <script>
-    function calcular() { // Função para calcular os resultados 
-      var t = parseFloat(document.getElementById("eps").value); // Obtém o número total de episódios 
-      var a = parseFloat(document.getElementById("assistindo").value); // Obtém o número de episódios assistidos -->
-      var f = parseFloat(document.getElementById("falta").value); // Obtém o número de episódios restantes 
-      var m = document.getElementById("minutos").value; // Obtém a duração média dos episódios 
-      var minutosOutro = document.getElementById("minutosOutro").value; // Obtém a duração personalizada, se aplicável 
+  <!-- Créditos -->
+  <div class="credits">© <a href="https://tsukiscarso.shop" target="_blank">tsukiscarso</a> | Construído por Kevyn Scarso <a href="https://www.instagram.com/kscarso.wttx" target="_blank"><img src="img/instagram.png" alt="Instagram" style="width: 20px;"></a></div>
 
-      if (m === "outro" && !isNaN(minutosOutro)) { // Verifica se a duração é personalizada e válida 
-        m = parseFloat(minutosOutro); // Converte a duração personalizada para número 
-      } else if (m !== "outro") { // Verifica se a duração não é personalizada 
-        m = parseFloat(m); // Converte a duração padrão para número 
-      } else { // Caso a duração personalizada não seja válida 
-        alert("Por favor, insira um valor válido para a duração dos episódios."); // Alerta de valor inválido 
-        return; // Retorna para evitar o cálculo com valor inválido 
+  <script>
+    function calcular() {
+      var t = parseFloat(document.getElementById("eps").value);
+      var a = parseFloat(document.getElementById("assistindo").value);
+      var f = parseFloat(document.getElementById("falta").value);
+      var m = document.getElementById("minutos").value;
+      var minutosOutro = parseFloat(document.getElementById("minutosOutro").value);
+      var segundosOutro = parseFloat(document.getElementById("segundosOutro").value);
+
+      if (m === "outro" && !isNaN(minutosOutro)) {
+        m = minutosOutro;
+        if (!isNaN(segundosOutro)) {
+          m += segundosOutro / 60; // Converter segundos para minutos e adicionar aos minutos totais
+        }
+      } else if (m === "outro" && isNaN(minutosOutro) && !isNaN(segundosOutro)) {
+        alert("Por favor, insira um valor válido para a duração dos episódios (minutos).");
+        return;
+      } else {
+        m = parseFloat(m);
       }
 
-      var toh = (t * m) / 60; // Calcula o total de horas 
-      var tod = (t * m) / 60 / 24; // Calcula o total de dias 
+      var toh = (t * m) / 60;
+      var tod = (t * m) / 60 / 24;
       var faltah = (f * m) / 60;
-var faltad = (f * m) / 60 / 24; // Calcula os episódios restantes em dias 
-      var assistindoh = ((t - a) * m) / 60; // Calcula o tempo para terminar em horas
-      var assistindod = ((t - a) * m) / 60 / 24; // Calcula o tempo para terminar em dias 
+      var faltad = (f * m) / 60 / 24;
+      var assistindoh = ((t - a) * m) / 60;
+      var assistindod = ((t - a) * m) / 60 / 24;
 
-      var resultado = "Eps total em horas: " + toh.toFixed(2) + "<br>"; // Resultado do total de horas 
-      resultado += "Eps total em dias: " + tod.toFixed(2) + "<br>"; // Resultado do total de dias 
-      resultado += "Eps que falta em horas: " + faltah.toFixed(2) + "<br>"; // Resultado dos episódios restantes em horas 
-      resultado += "Eps que falta em dias: " + faltad.toFixed(2) + "<br>"; //Resultado dos episódios restantes em dias 
-      resultado += "Tempo para terminar (em horas): " + assistindoh.toFixed(2) + "<br>"; // Resultado do tempo para terminar em horas 
-      resultado += "Tempo para terminar (em dias): " + assistindod.toFixed(2); // Resultado do tempo para terminar em dias
+      var resultado = "<h3>Resultados:</h3>";
 
-      document.getElementById("resultado").innerHTML = resultado; // Exibe o resultado na página 
+      if (!isNaN(toh)) {
+        resultado += "<p>Eps total em horas: " + formatarTempo(toh) + "</p>";
+      }
+      if (!isNaN(tod)) {
+        resultado += "<p>Eps total em dias: " + tod.toFixed(2) + "</p>";
+      }
+      if (!isNaN(assistindoh)) {
+        resultado += "<p>Tempo para terminar (em horas): " + formatarTempo(assistindoh) + "</p>";
+      }
+      if (!isNaN(assistindod)) {
+        resultado += "<p>Tempo para terminar (em dias): " + assistindod.toFixed(2) + "</p>";
+      }
+      if (!isNaN(faltah)) {
+        resultado += "<p>Eps que falta em horas: " + formatarTempo(faltah) + "</p>";
+      }
+      if (!isNaN(faltad)) {
+        resultado += "<p>Eps que falta em dias: " + faltad.toFixed(2) + "</p>";
+      }
+
+      var resultadoElement = document.getElementById("resultado");
+      resultadoElement.innerHTML = resultado;
+      resultadoElement.style.display = "block"; // Exibe o resultado após o cálculo
     }
 
-    function mostrarCampoOutro() { // Função para mostrar/esconder campo de duração personalizada 
-      var selectMinutos = document.getElementById("minutos"); // Obtém o elemento da caixa de seleção de duração 
-      var inputMinutosOutro = document.getElementById("minutosOutro"); /* Obtém o elemento do campo de duração personalizada */
+    function mostrarCampoOutro() {
+      var selectMinutos = document.getElementById("minutos");
+      var inputMinutosOutro = document.getElementById("minutosOutro");
+      var inputSegundosOutro = document.getElementById("segundosOutro");
 
-      if (selectMinutos.value === "outro") { // Verifica se a opção "Outro" foi selecionada 
-        inputMinutosOutro.style.display = "block"; // Mostra o campo de duração personalizada 
-      } else { // Caso contrário 
-        inputMinutosOutro.style.display = "none"; // Esconde o campo de duração personalizada 
+      if (selectMinutos.value === "outro") {
+        inputMinutosOutro.style.display = "block";
+        inputSegundosOutro.style.display = "block";
+      } else {
+        inputMinutosOutro.style.display = "none";
+        inputSegundosOutro.style.display = "none";
       }
+    }
+
+    function formatarTempo(tempoEmHoras) {
+      var horas = Math.floor(tempoEmHoras);
+      var minutos = Math.floor((tempoEmHoras - horas) * 60);
+      var segundos = Math.round((((tempoEmHoras - horas) * 60) - minutos) * 60);
+
+      // Ajuste para exibir horas, minutos e segundos
+      var resultado = horas + " horas, ";
+      resultado += minutos + " minutos, ";
+      resultado += segundos + " segundos";
+
+      return resultado;
+    }
+
+    function limparCampos() {
+      document.getElementById("eps").value = "";
+      document.getElementById("assistindo").value = "";
+      document.getElementById("falta").value = "";
+      document.getElementById("minutos").selectedIndex = 0;
+      document.getElementById("minutosOutro").value = "";
+      document.getElementById("segundosOutro").value = "";
+      document.getElementById("resultado").style.display = "none";
     }
   </script>
 </body>
